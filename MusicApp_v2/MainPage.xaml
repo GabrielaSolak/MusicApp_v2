@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicApp_v2.MainPage"
+             BackgroundColor="#580B0B">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+
+            <Frame BackgroundColor="#802F2F" BorderColor="#802F2F" CornerRadius="15" WidthRequest="342" HeightRequest="42" Margin="20" Padding="10,0">
+                <Entry Placeholder="Wyszukaj utwór.." TextColor="#FDE4E4" PlaceholderColor="#FDE4E4" FontFamily="RedRose"/>
+            </Frame>
+
+
+            <Label Text="Popularne:" FontSize="36" TextColor="#FDE4E4" FontFamily="RedRose" Margin="10"/>
+
+            <CollectionView ItemsSource="{Binding PopularSongs}"
+                            ItemsLayout="HorizontalList"
+                            HeightRequest="160"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame WidthRequest="170" HeightRequest="170" Padding="0" HasShadow="False" CornerRadius="15" Margin="5,0">
+                            <Image Source="{Binding Cover}" Aspect="AspectFill"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid ColumnDefinitions="30, *, *">
+                <Frame WidthRequest="346" HeightRequest="47" BackgroundColor="#FDE4E4" Padding="5,5" CornerRadius="30" Grid.Column="1" Margin="20">
+                    <Label Text="Dostępne utwory:" FontSize="24" TextColor="#580B0B" HorizontalOptions="Center" FontFamily="RedRose"/>
+                </Frame>
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding Songs}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="60,*,Auto" Padding="5">
+                            <Frame WidthRequest="55" HeightRequest="55" CornerRadius="10" HasShadow="False" Padding="0">
+                                <Image Source="{Binding Cover}" Aspect="AspectFill">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenPlayerCommand}"
+                                            CommandParameter="{Binding .}" />
+
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Spacing="0" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" TextColor="#FDE4E4" FontSize="24" FontFamily="RedRose"/>
+                                <Label Text="{Binding Artist}" TextColor="#FDE4E4" FontSize="14" FontFamily="RedRose"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
