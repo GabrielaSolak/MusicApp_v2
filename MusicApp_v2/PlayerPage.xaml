@@ -2,11 +2,48 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MusicApp_v2.PlayerPage"
-             Title="PlayerPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="PlayerPage"
+             BackgroundColor="#580B0B">
+
+    <VerticalStackLayout Padding="20" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+
+        <ImageButton Source="back.png"
+                     WidthRequest="80"
+                     HeightRequest="60"
+                     HorizontalOptions="Start"
+                     Clicked="BackButton_Clicked" />
+
+        <Frame HasShadow="False" Padding="0" CornerRadius="15" Margin="30">
+            <Image x:Name="CoverImage"
+                   WidthRequest="286"
+                   HeightRequest="286"
+                   Aspect="AspectFill"/>
+        </Frame>
+
+        <Label x:Name="TitleLabel"
+               Text=""
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="#FDE4E4"
+               HorizontalTextAlignment="Center"/>
+
+        <Label x:Name="ArtistLabel"
+               Text=""
+               FontSize="15"
+               TextColor="#FDE4E4"
+               HorizontalTextAlignment="Center"/>
+
+        <HorizontalStackLayout Spacing="30" HorizontalOptions="Center" Margin="25">
+            <Frame WidthRequest="55" HeightRequest="55" BackgroundColor="#FDE4E4" CornerRadius="27.5" HasShadow="False" Padding="0">
+                <Image Source="previous.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+            <Frame WidthRequest="55" HeightRequest="55" BackgroundColor="#FDE4E4" CornerRadius="27.5" HasShadow="False" Padding="0">
+                <Image Source="play.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+            <Frame WidthRequest="55" HeightRequest="55" BackgroundColor="#FDE4E4" CornerRadius="27.5" HasShadow="False" Padding="0">
+                <Image Source="next.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+        </HorizontalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>

@@ -30,7 +30,12 @@ namespace MusicApp_v2
             new Song { Title = "To już było", Artist = "Maryla Rodowicz", Cover = "cover4.jpg" }
         };
 
-
+            //otwarcie odtwarzacza i przeslanie informacji o utworze
+            OpenPlayerCommand = new Command<Song>(async (song) =>
+            {
+                if (song != null)
+                    await Navigation.PushAsync(new PlayerPage(song.Title, song.Artist, song.Cover));
+            });
 
             BindingContext = this;
         }
