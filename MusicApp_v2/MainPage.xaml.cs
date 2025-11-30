@@ -34,8 +34,12 @@ namespace MusicApp_v2
             OpenPlayerCommand = new Command<Song>(async (song) =>
             {
                 if (song != null)
-                    await Navigation.PushAsync(new PlayerPage(song.Title, song.Artist, song.Cover));
+                {
+                    int index = Songs.IndexOf(song);
+                    await Navigation.PushAsync(new PlayerPage(Songs, index));
+                }
             });
+
 
             BindingContext = this;
         }
