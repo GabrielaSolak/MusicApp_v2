@@ -8,7 +8,11 @@
         <VerticalStackLayout Padding="20">
 
             <Frame BackgroundColor="#802F2F" BorderColor="#802F2F" CornerRadius="15" WidthRequest="342" HeightRequest="42" Margin="20" Padding="10,0">
-                <Entry Placeholder="Wyszukaj utwór.." TextColor="#FDE4E4" PlaceholderColor="#FDE4E4" FontFamily="RedRose"/>
+                <Entry Placeholder="Wyszukaj utwór.." 
+                       TextColor="#FDE4E4" 
+                       PlaceholderColor="#FDE4E4" 
+                       Completed="OnSearchCompleted"
+                       FontFamily="RedRose"/>
             </Frame>
 
 
